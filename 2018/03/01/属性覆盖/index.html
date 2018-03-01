@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-cn">
   <head>
     
 <meta charset="UTF-8"/>
@@ -17,7 +17,7 @@
 
 
 
-  <meta name="description" content="Hello World"/>
+  <meta name="description" content="属性覆盖"/>
 
 
 
@@ -40,7 +40,7 @@
 
 
 
-<link rel="canonical" href="http://yoursite.com/2018/02/23/hello-world/"/>
+<link rel="canonical" href="http://yoursite.com/2018/03/01/属性覆盖/"/>
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=2.6.0" />
@@ -79,7 +79,7 @@
 
 
 
-    <title> Hello World - Chelseasc </title>
+    <title> 属性覆盖 - Chelseasc </title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -118,7 +118,7 @@
         <li class="mobile-menu-item">
           
           
-            关于我
+            关于
           
         </li>
       </a>
@@ -157,7 +157,7 @@
           <a class="menu-item-link" href="/about">
             
             
-              关于我
+              关于
             
           </a>
         </li>
@@ -177,13 +177,13 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          Hello World
+          属性覆盖
         
       </h1>
 
       <div class="post-meta">
         <span class="post-time">
-          2018-02-23
+          2018-03-01
         </span>
         
         
@@ -192,25 +192,15 @@
 
     
     
-  <div class="post-toc" id="post-toc">
-    <h2 class="post-toc-title">文章目录</h2>
-    <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
-    </div>
-  </div>
-
 
     <div class="post-content">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <p>​    在js中每个对象都有一个私有属性（[[Prototype]]），并指向它的原型对象（prototype），这个原型对象也有自己的prototype，层层向上直到指向的原型为null。</p>
+<p>​    何为属性覆盖呢？先来看一组现象：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 我们假设有一个对象 o, 其有自己的属性 a 和 b：</span><br><span class="line">var o = &#123;a: 1, b: 2&#125;;</span><br><span class="line">// o 的 [[Prototype]] 有属性 b 和 c：  &#123;b: 3, c: 4&#125;</span><br><span class="line">// 最后, o.[[Prototype]].[[Prototype]] 是 null.</span><br><span class="line">// 这就是原型链的末尾，即 null</span><br><span class="line"></span><br><span class="line">// 根据定义，null 没有[[Prototype]].</span><br><span class="line">// 综上，整个原型链如下:</span><br><span class="line">// &#123;a:1, b:2&#125; ---&gt; &#123;b:3, c:4&#125; ---&gt; null</span><br></pre></td></tr></table></figure>
+<p>现在我们分别看看o的各个属性的值是多少：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">console.log(o.a);   // 1   a是o的自身属性，属性值为1</span><br><span class="line">console.log(o.b);   // 2   b是o的自身属性，属性值为2</span><br><span class="line">console.log(o.c);   // 4   c不是o的自身属性，层层向上，是o.[[Prototype]]的自身属性，属性值为2</span><br><span class="line">console.log(o.d);   // undefined   d不是o的自身属性，层层向上，也不是o.[[Prototype]]的自身属性，o.[[Prototype]]的原型o.[[Prototype]].[[Prototype]]为null，所以会停止搜索，并返回undefined</span><br></pre></td></tr></table></figure>
+<p>如上所述，o有一个属性b，但是o.[[Prototype]]也有一个属性b，不过这里的b不会被访问到。这种现象就叫“属性遮蔽”“或”属性覆盖“。</p>
 
       
     </div>
@@ -226,7 +216,7 @@
     </p>
     <p class="copyright-item">
       <span>原文链接: </span>
-      <a href="http://yoursite.com/2018/02/23/hello-world/">http://yoursite.com/2018/02/23/hello-world/</a>
+      <a href="http://yoursite.com/2018/03/01/属性覆盖/">http://yoursite.com/2018/03/01/属性覆盖/</a>
     </p>
     <p class="copyright-item">
       <span>许可协议: </span>
@@ -291,7 +281,7 @@
     
       
         
-          <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
+          <a href="mailto:pandasscc@gmail.com" class="iconfont icon-email" title="email"></a>
         
       
     
@@ -305,6 +295,10 @@
     
       
     
+      
+        
+          <a href="https://github.com/Chelseasc" class="iconfont icon-github" title="github"></a>
+        
       
     
       
@@ -333,7 +327,7 @@
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    Theme - 
+    主题 - 
     <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
   </span>
 
@@ -341,7 +335,7 @@
     
     &copy; 
      
-      2015 - 
+      2016 - 
     
     2018
 
