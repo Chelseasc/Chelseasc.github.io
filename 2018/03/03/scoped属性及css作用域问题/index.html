@@ -17,7 +17,7 @@
 
 
 
-  <meta name="description" content="scoped属性及css作用域问题"/>
+  <meta name="description" content="scoped���Լ�css����������"/>
 
 
 
@@ -79,7 +79,7 @@
 
 
 
-    <title> scoped属性及css作用域问题 - Chelseasc </title>
+    <title> scoped���Լ�css���������� - Chelseasc </title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -177,7 +177,7 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          scoped属性及css作用域问题
+          scoped���Լ�css����������
         
       </h1>
 
@@ -195,22 +195,22 @@
 
     <div class="post-content">
       
-        <p>在Vue中，使用scoped后父组件的样式不会渗透到子组件中。</p>
-<p>scoped虽然在某些情况下会降低css解析效率，但是它可以优雅的实现样式私有化，它通过使用PostCSS(github上的介绍：PostCSS is a tool for transforming CSS with JS plugins. These plugins can support variables and mixins, transpile future CSS syntax, inline images, and more.)来实现转换，效果如下：</p>
+        <p>��Vue�У�ʹ��scoped���������ʽ������͸��������С�</p>
+<p>scoped��Ȼ��ĳЩ����»ή��css����Ч�ʣ��������������ŵ�ʵ����ʽ˽�л�����ͨ��ʹ��PostCSS(github�ϵĽ��ܣ�PostCSS is a tool for transforming CSS with JS plugins. These plugins can support variables and mixins, transpile future CSS syntax, inline images, and more.)��ʵ��ת����Ч�����£�</p>
 <a id="more"></a>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;style scoped&gt;</span><br><span class="line">.banner &#123;</span><br><span class="line">    background-color: #fff;</span><br><span class="line">    width: 100%;</span><br><span class="line">    height: rem(398);</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;banner&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
-<p>转换效果：</p>
+<p>ת��Ч����</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">.banner[data-v-2768f1be] &#123;</span><br><span class="line">    background-color: #fff;</span><br><span class="line">    width: 100%;</span><br><span class="line">    height: 3.98rem;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;banner&quot; data-v-2768f1be&gt;hi&lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
-<p>那么问题来了，当我们希望改子组件样式的时候该怎么做呢？</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//我在实际工作中用了YDUI这个子组件</span><br><span class="line">&lt;template&gt;</span><br><span class="line">&lt;yd-layout class=&quot;layout&quot;&gt;</span><br><span class="line">	&lt;yd-cell-group&gt;</span><br><span class="line">		&lt;yd-cell-item&gt;</span><br><span class="line">            &lt;span slot=&quot;left&quot;&gt;XXXXX&lt;/span&gt;</span><br><span class="line">            &lt;yd-input class=&quot;blue-placeholder&quot; ref=&quot;regCode&quot; type=&quot;email&quot; slot=&quot;right&quot; v-model=&quot;regCode&quot;&gt;&lt;/yd-input&gt;</span><br><span class="line">          &lt;/yd-cell-item&gt;</span><br><span class="line">        &lt;/yd-cell-group&gt;</span><br><span class="line">    &lt;/yd-layout&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
-<p>这时候想要改 .blue-placeholder这个类名下的样式得这么做：</p>
+<p>��ô�������ˣ�������ϣ�����������ʽ��ʱ�����ô���أ�</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//����ʵ�ʹ���������YDUI��������</span><br><span class="line">&lt;template&gt;</span><br><span class="line">&lt;yd-layout class=&quot;layout&quot;&gt;</span><br><span class="line">	&lt;yd-cell-group&gt;</span><br><span class="line">		&lt;yd-cell-item&gt;</span><br><span class="line">            &lt;span slot=&quot;left&quot;&gt;XXXXX&lt;/span&gt;</span><br><span class="line">            &lt;yd-input class=&quot;blue-placeholder&quot; ref=&quot;regCode&quot; type=&quot;email&quot; slot=&quot;right&quot; v-model=&quot;regCode&quot;&gt;&lt;/yd-input&gt;</span><br><span class="line">          &lt;/yd-cell-item&gt;</span><br><span class="line">        &lt;/yd-cell-group&gt;</span><br><span class="line">    &lt;/yd-layout&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+<p>��ʱ����Ҫ�� .blue-placeholder��������µ���ʽ����ô����</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.layout /deep/ .blue-placeholder input &#123;</span><br><span class="line">  text-transform: uppercase;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <hr>
-<p>注意：</p>
+<p>ע�⣺</p>
 <blockquote>
 <ul>
-<li><strong>CSS 作用域不能代替 class</strong>。考虑到浏览器渲染各种 CSS 选择器的方式，当 <code>p { color: red }</code>设置了作用域时 (即与特性选择器组合使用时) 会慢很多倍。如果你使用 class 或者 id 取而代之，比如 <code>.example { color: red }</code>，性能影响就会消除。</li>
-<li><strong>在递归组件中小心使用后代选择器!</strong> 对选择器 <code>.a .b</code> 中的 CSS 规则来说，如果匹配 <code>.a</code> 的元素包含一个递归子组件，则所有的子组件中的 <code>.b</code> 都将被这个规则匹配。</li>
+<li><strong>CSS �������ܴ��� class</strong>�����ǵ��������Ⱦ���� CSS ѡ�����ķ�ʽ���� <code>p { color: red }</code>������������ʱ (��������ѡ�������ʹ��ʱ) �����ܶ౶�������ʹ�� class ���� id ȡ����֮������ <code>.example { color: red }</code>������Ӱ��ͻ�������</li>
+<li><strong>�ڵݹ������С��ʹ�ú��ѡ����!</strong> ��ѡ���� <code>.a .b</code> �е� CSS ������˵�����ƥ�� <code>.a</code> ��Ԫ�ذ���һ���ݹ�������������е�������е� <code>.b</code> �������������ƥ�䡣</li>
 </ul>
 </blockquote>
 
