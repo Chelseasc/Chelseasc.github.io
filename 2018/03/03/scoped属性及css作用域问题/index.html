@@ -17,7 +17,7 @@
 
 
 
-  <meta name="description" content="两种方式给input输入的值转换为大写（或小写）"/>
+  <meta name="description" content="scoped属性及css作用域问题"/>
 
 
 
@@ -40,7 +40,7 @@
 
 
 
-<link rel="canonical" href="http://sshencchen.me/2018/03/05/两种方式给input输入的值转换为大写（或小写）/"/>
+<link rel="canonical" href="http://sshencchen.me/2018/03/03/scoped属性及css作用域问题/"/>
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=2.6.0" />
@@ -79,7 +79,7 @@
 
 
 
-    <title> 两种方式给input输入的值转换为大写（或小写） - Chelseasc </title>
+    <title> scoped属性及css作用域问题 - Chelseasc </title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -177,13 +177,13 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          两种方式给input输入的值转换为大写（或小写）
+          scoped属性及css作用域问题
         
       </h1>
 
       <div class="post-meta">
         <span class="post-time">
-          2018-03-05
+          2018-03-03
         </span>
         
         
@@ -195,18 +195,16 @@
 
     <div class="post-content">
       
-        <p>1.事件</p>
-<p>input里 加v-on:input=”handleFocus”</p>
+        <p>在Vue中，使用scoped后父组件的样式不会渗透到子组件中。</p>
+<p>scoped虽然会降低css解析效率，但是它可以优雅的实现样式私有化，它通过使用PostCSS(github上的介绍：PostCSS is a tool for transforming CSS with JS plugins. These plugins can support variables and mixins, transpile future CSS syntax, inline images, and more.)来实现转换，效果如下：</p>
 <a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;yd-input class=&quot;blue-placeholder&quot; ref=&quot;regCode&quot;  v-model=&quot;regCode&quot;</span><br><span class="line">          regex=&quot;^[\w\s]+$&quot; required placeholder=&quot;给input输入的值转换为大写&quot;</span><br><span class="line">          &gt;&lt;/yd-input&gt;</span><br></pre></td></tr></table></figure>
-<p>methods里 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">handleFocus() &#123;</span><br><span class="line"></span><br><span class="line">    console.log(this.refs.regCode.value)</span><br><span class="line"></span><br><span class="line">    this.regCode = this.refs.regCode.value.toUpperCase()</span><br><span class="line"></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<p>2.css</p>
-<p>注意css作用域，详情在上一篇xxxxxxx     关键词/deep/</p>
-<p>lowercase 转为小写</p>
-<p>capitalize 单词首字母转为大写</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.layout /deep/ .blue-placeholder input&#123;</span><br><span class="line">  text-transform: uppercase;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>两种方式我更推荐css方法，因为用户体验较好，输入小写即得大写。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;style scoped&gt;</span><br><span class="line">.banner &#123;</span><br><span class="line">    background-color: #fff;</span><br><span class="line">    width: 100%;</span><br><span class="line">    height: rem(398);</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;banner&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+<p>转换效果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">.banner[data-v-2768f1be] &#123;</span><br><span class="line">    background-color: #fff;</span><br><span class="line">    width: 100%;</span><br><span class="line">    height: 3.98rem;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;banner&quot; data-v-2768f1be&gt;hi&lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+<p>那么问题来了，当我们希望改子组件样式的时候该怎么做呢？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//我在实际工作中用了YDUI这个子组件</span><br><span class="line">&lt;template&gt;</span><br><span class="line">&lt;yd-layout class=&quot;layout&quot;&gt;</span><br><span class="line">	&lt;yd-cell-group&gt;</span><br><span class="line">		&lt;yd-cell-item&gt;</span><br><span class="line">            &lt;span slot=&quot;left&quot;&gt;XXXXX&lt;/span&gt;</span><br><span class="line">            &lt;yd-input class=&quot;blue-placeholder&quot; ref=&quot;regCode&quot; type=&quot;email&quot; slot=&quot;right&quot; v-model=&quot;regCode&quot;&gt;&lt;/yd-input&gt;</span><br><span class="line">          &lt;/yd-cell-item&gt;</span><br><span class="line">        &lt;/yd-cell-group&gt;</span><br><span class="line">    &lt;/yd-layout&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+<p>这时候想要改 .blue-placeholder这个类名下的样式得这么做：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.layout /deep/ .blue-placeholder input &#123;</span><br><span class="line">  text-transform: uppercase;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -222,7 +220,7 @@
     </p>
     <p class="copyright-item">
       <span>原文链接: </span>
-      <a href="http://sshencchen.me/2018/03/05/两种方式给input输入的值转换为大写（或小写）/">http://sshencchen.me/2018/03/05/两种方式给input输入的值转换为大写（或小写）/</a>
+      <a href="http://sshencchen.me/2018/03/03/scoped属性及css作用域问题/">http://sshencchen.me/2018/03/03/scoped属性及css作用域问题/</a>
     </p>
     <p class="copyright-item">
       <span>许可协议: </span>
@@ -262,9 +260,15 @@
         
   <nav class="post-nav">
     
+      <a class="prev" href="/2018/03/05/两种方式给input输入的值转换为大写（或小写）/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">两种方式给input输入的值转换为大写（或小写）</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
     
-      <a class="next" href="/2018/03/03/scoped属性及css作用域问题/">
-        <span class="next-text nav-default">scoped属性及css作用域问题</span>
+    
+      <a class="next" href="/2018/03/01/属性覆盖/">
+        <span class="next-text nav-default">JS对象的属性覆盖</span>
         <span class="prev-text nav-mobile">下一篇</span>
         <i class="iconfont icon-right"></i>
       </a>
