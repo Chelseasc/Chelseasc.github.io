@@ -177,57 +177,6 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          <a class="post-link" href="/2018/03/15/element-ui Tree树形控件清空勾选项/"></a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2018-03-15
-        </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          <h1 id="element-ui-Tree���οؼ���չ�ѡ��"><a href="#element-ui-Tree���οؼ���չ�ѡ��" class="headerlink" title="element-ui Tree���οؼ���չ�ѡ��"></a>element-ui Tree���οؼ���չ�ѡ��</h1><p>������һ�����������Tree����ѡ��򵥵ķ������Ƿ�ѡ���ٱ���ͺ��ˡ���������������Ȼ��Ʒ�����ǲ���ͬ��� (?��? ��?)������ķ�ʽ����ʵ��һ�������</p>
-<p><img src="[readme_img](https://github.com/Chelseasc/readme_img" alt="image">/<strong>element-tree.png</strong>)</p>
-<p>����element tree��ͨ����ֵ�ķ�ʽ��ȷ���Ƿ��ѹ�ѡ�ģ����ǿ�����setCheckedKeys()���������ã�</p>
-<p>setCheckedKeys()����Ҫ������ node-key ���ԣ���һ��Ҫע��һ�¡�</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-tree class=&quot;filter-tree&quot; show-checkbox :data=&quot;channelOptionsList&quot; :props=&quot;defaultProps&quot; node-key=&quot;value&quot; highlight-current ref=&quot;tree&quot; :filter-node-method=&quot;filterNode&quot;&gt;&lt;/el-tree&gt;</span><br></pre></td></tr></table></figure>
-<p>Ϊ�������ѡ���ť��click�¼�</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-button size=&quot;medium&quot; icon=&quot;el-icon-close&quot; type=&quot;primary&quot; @click=&quot;handleClearForm()&quot;&gt;�����ѡ��&lt;/el-button&gt;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">handleClearForm() &#123;</span><br><span class="line">  this.$refs.tree.setCheckedKeys([])</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-<p>setCheckedKeys() ��������������1. ��ѡ�ڵ�� key ������ 2. boolean ���͵Ĳ�����Ϊ <code>true</code>�������Ҷ�ӽڵ��ѡ��״̬��Ĭ��ֵΪ <code>false</code></p>
-<p>����������Ҫ������飬����ֱ�Ӱ����鸳Ϊ�վͿ����ˡ�</p>
-<p>����Ч�����£�</p>
-<p><img src="[readme_img](https://github.com/Chelseasc/readme_img" alt="image">/<strong>element-tree.gif</strong>)</p>
-
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
           <a class="post-link" href="/2018/03/05/两种方式给input输入的值转换为大写（或小写）/">两种方式给input输入的值转换为大写（或小写）</a>
         
       </h1>
@@ -365,6 +314,63 @@
           <div class="read-more">
             <a href="/2018/03/01/属性覆盖/" class="read-more-link">阅读更多</a>
           </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2018/01/23/element-ui Tree树形控件清空勾选项/">element-ui Tree���οؼ���չ�ѡ��</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2018-01-23
+        </span>
+        
+          <div class="post-category">
+            
+              <a href="/categories/vue/">vue</a>
+            
+          </div>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <h1 id="element-ui-Tree���οؼ���չ�ѡ��"><a href="#element-ui-Tree���οؼ���չ�ѡ��" class="headerlink" title="element-ui Tree���οؼ���չ�ѡ��"></a>element-ui Tree���οؼ���չ�ѡ��</h1><p>������һ�����������Tree����ѡ��򵥵ķ������Ƿ�ѡ���ٱ���ͺ��ˡ���������������Ȼ��Ʒ�����ǲ���ͬ��� (?��? ��?)������ķ�ʽ����ʵ��һ�������</p>
+<p><img src="[readme_img](https://github.com/Chelseasc/readme_img" alt="image">/<strong>element-tree.png</strong>)</p>
+<p>����element tree��ͨ����ֵ�ķ�ʽ��ȷ���Ƿ��ѹ�ѡ�ģ����ǿ�����setCheckedKeys()���������ã�</p>
+<p>setCheckedKeys()����Ҫ������ node-key ���ԣ���һ��Ҫע��һ�¡�</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-tree class=&quot;filter-tree&quot; show-checkbox :data=&quot;channelOptionsList&quot; :props=&quot;defaultProps&quot; node-key=&quot;value&quot; highlight-current ref=&quot;tree&quot; :filter-node-method=&quot;filterNode&quot;&gt;&lt;/el-tree&gt;</span><br></pre></td></tr></table></figure>
+<p>Ϊ�������ѡ���ť��click�¼�</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-button size=&quot;medium&quot; icon=&quot;el-icon-close&quot; type=&quot;primary&quot; @click=&quot;handleClearForm()&quot;&gt;�����ѡ��&lt;/el-button&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">handleClearForm() &#123;</span><br><span class="line">  this.$refs.tree.setCheckedKeys([])</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<p>setCheckedKeys() ��������������1. ��ѡ�ڵ�� key ������ 2. boolean ���͵Ĳ�����Ϊ <code>true</code>�������Ҷ�ӽڵ��ѡ��״̬��Ĭ��ֵΪ <code>false</code></p>
+<p>����������Ҫ������飬����ֱ�Ӱ����鸳Ϊ�վͿ����ˡ�</p>
+<p>����Ч�����£�</p>
+<p><img src="[readme_img](https://github.com/Chelseasc/readme_img" alt="image">/<strong>element-tree.gif</strong>)</p>
+
         
       
     </div>
