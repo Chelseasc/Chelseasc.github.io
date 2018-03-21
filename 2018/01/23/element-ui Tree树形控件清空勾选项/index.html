@@ -17,7 +17,7 @@
 
 
 
-  <meta name="description" content="element-ui Tree���οؼ���չ�ѡ��"/>
+  <meta name="description" content="element-ui Tree树形控件清空勾选项"/>
 
 
 
@@ -79,7 +79,7 @@
 
 
 
-    <title> element-ui Tree���οؼ���չ�ѡ�� - Chelseasc </title>
+    <title> element-ui Tree树形控件清空勾选项 - Chelseasc </title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -177,7 +177,7 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          element-ui Tree���οؼ���չ�ѡ��
+          element-ui Tree树形控件清空勾选项
         
       </h1>
 
@@ -201,24 +201,24 @@
   <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目录</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#element-ui-Tree���οؼ���չ�ѡ��"><span class="toc-text">element-ui Tree���οؼ���չ�ѡ��</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#element-ui-Tree树形控件清空勾选项"><span class="toc-text">element-ui Tree树形控件清空勾选项</span></a></li></ol>
     </div>
   </div>
 
 
     <div class="post-content">
       
-        <h1 id="element-ui-Tree���οؼ���չ�ѡ��"><a href="#element-ui-Tree���οؼ���չ�ѡ��" class="headerlink" title="element-ui Tree���οؼ���չ�ѡ��"></a>element-ui Tree���οؼ���չ�ѡ��</h1><p>������һ�����������Tree����ѡ��򵥵ķ������Ƿ�ѡ���ٱ���ͺ��ˡ���������������Ȼ��Ʒ�����ǲ���ͬ��� (?��? ��?)������ķ�ʽ����ʵ��һ�������</p>
+        <h1 id="element-ui-Tree树形控件清空勾选项"><a href="#element-ui-Tree树形控件清空勾选项" class="headerlink" title="element-ui Tree树形控件清空勾选项"></a>element-ui Tree树形控件清空勾选项</h1><p>现在有一个需求是清除Tree里已选项，简单的方法就是反选，再保存就好了。但是这样做很显然产品经理是不会同意的 (?⊙? ⊙?)，下面的方式可以实现一键清除。</p>
 <p><img src="[readme_img](https://github.com/Chelseasc/readme_img" alt="image">/<strong>element-tree.png</strong>)</p>
-<p>����element tree��ͨ����ֵ�ķ�ʽ��ȷ���Ƿ��ѹ�ѡ�ģ����ǿ�����setCheckedKeys()���������ã�</p>
-<p>setCheckedKeys()����Ҫ������ node-key ���ԣ���һ��Ҫע��һ�¡�</p>
+<p>由于element tree是通过赋值的方式来确定是否已勾选的，我们可以用setCheckedKeys()方法来设置：</p>
+<p>setCheckedKeys()方法要求设置 node-key 属性，这一点要注意一下。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-tree class=&quot;filter-tree&quot; show-checkbox :data=&quot;channelOptionsList&quot; :props=&quot;defaultProps&quot; node-key=&quot;value&quot; highlight-current ref=&quot;tree&quot; :filter-node-method=&quot;filterNode&quot;&gt;&lt;/el-tree&gt;</span><br></pre></td></tr></table></figure>
-<p>Ϊ�������ѡ���ť��click�¼�</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-button size=&quot;medium&quot; icon=&quot;el-icon-close&quot; type=&quot;primary&quot; @click=&quot;handleClearForm()&quot;&gt;�����ѡ��&lt;/el-button&gt;</span><br></pre></td></tr></table></figure>
+<p>为“清除已选项”按钮绑定click事件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-button size=&quot;medium&quot; icon=&quot;el-icon-close&quot; type=&quot;primary&quot; @click=&quot;handleClearForm()&quot;&gt;清除已选项&lt;/el-button&gt;</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">handleClearForm() &#123;</span><br><span class="line">  this.$refs.tree.setCheckedKeys([])</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-<p>setCheckedKeys() ��������������1. ��ѡ�ڵ�� key ������ 2. boolean ���͵Ĳ�����Ϊ <code>true</code>�������Ҷ�ӽڵ��ѡ��״̬��Ĭ��ֵΪ <code>false</code></p>
-<p>����������Ҫ������飬����ֱ�Ӱ����鸳Ϊ�վͿ����ˡ�</p>
-<p>����Ч�����£�</p>
+<p>setCheckedKeys() 接收两个参数，1. 勾选节点的 key 的数组 2. boolean 类型的参数，为 <code>true</code>则仅设置叶子节点的选中状态，默认值为 <code>false</code></p>
+<p>这里我们是要清空数组，所以直接把数组赋为空就可以了。</p>
+<p>最终效果如下：</p>
 <p><img src="[readme_img](https://github.com/Chelseasc/readme_img" alt="image">/<strong>element-tree.gif</strong>)</p>
 
       
