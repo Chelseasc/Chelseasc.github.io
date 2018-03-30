@@ -17,7 +17,7 @@
 
 
 
-  <meta name="description" content="element-ui Tree树形控件清空勾选项"/>
+  <meta name="description" content="【数据结构与算法】最大子序列和"/>
 
 
 
@@ -40,7 +40,7 @@
 
 
 
-<link rel="canonical" href="http://sshencchen.me/2018/01/23/element-ui Tree树形控件清空勾选项/"/>
+<link rel="canonical" href="http://sshencchen.me/2018/01/03/Maximum Continuous Subsequence Sum/"/>
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=2.6.0" />
@@ -79,7 +79,7 @@
 
 
 
-    <title> element-ui Tree树形控件清空勾选项 - Chelseasc </title>
+    <title> 【数据结构与算法】最大子序列和 - Chelseasc </title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -177,18 +177,18 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          element-ui Tree树形控件清空勾选项
+          【数据结构与算法】最大子序列和
         
       </h1>
 
       <div class="post-meta">
         <span class="post-time">
-          2018-01-23
+          2018-01-03
         </span>
         
           <div class="post-category">
             
-              <a href="/categories/vue/">vue</a>
+              <a href="/categories/数据结构/">数据结构</a>
             
           </div>
         
@@ -201,18 +201,16 @@
 
     <div class="post-content">
       
-        <p>现在有一个需求是清除Tree里已选项，简单的方法就是反选，再保存就好了。但是这样做很显然产品经理是不会同意的 (?⊙? ⊙?)，下面的方式可以实现一键清除。</p>
-<p><img src="http://oyd0q85o6.bkt.clouddn.com/element-tree.png" alt="image"><br><a id="more"></a></p>
-<p>由于element tree是通过赋值的方式来确定是否已勾选的，我们可以用setCheckedKeys()方法来设置：</p>
-<p>setCheckedKeys()方法要求设置 node-key 属性，这一点要注意一下。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-tree class=&quot;filter-tree&quot; show-checkbox :data=&quot;channelOptionsList&quot; :props=&quot;defaultProps&quot; node-key=&quot;value&quot; highlight-current ref=&quot;tree&quot; :filter-node-method=&quot;filterNode&quot;&gt;&lt;/el-tree&gt;</span><br></pre></td></tr></table></figure>
-<p>为“清除已选项”按钮绑定click事件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-button size=&quot;medium&quot; icon=&quot;el-icon-close&quot; type=&quot;primary&quot; @click=&quot;handleClearForm()&quot;&gt;清除已选项&lt;/el-button&gt;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">handleClearForm() &#123;</span><br><span class="line">  this.$refs.tree.setCheckedKeys([])</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-<p>setCheckedKeys() 接收两个参数，1. 勾选节点的 key 的数组 2. boolean 类型的参数，为 <code>true</code>则仅设置叶子节点的选中状态，默认值为 <code>false</code></p>
-<p>这里我们是要清空数组，所以直接把数组赋为空就可以了。</p>
-<p>最终效果如下：</p>
-<p><img src="http://oyd0q85o6.bkt.clouddn.com/element-tree.gif" alt="image"></p>
+        <p>最大子序列和</p>
+<p>方法一：暴力 O(N3)</p>
+<p>算出所有子列和，再求最大的</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">int MaxSubseqSuml(int A[], int N) &#123;</span><br><span class="line"></span><br><span class="line">	int ThisSum, MaxSum = 0;</span><br><span class="line">	int i, j, k;</span><br><span class="line">	for(i = 0; i &lt; N; i++) &#123;  //i是子列左端位置</span><br><span class="line">        for(j = i; j &lt; N; j++) &#123;  //j是子列右端位置</span><br><span class="line">            ThisSum = 0;  //A[i]到A[j]的子列和</span><br><span class="line">            for(k = i; k &lt;= j; k++) &#123;</span><br><span class="line">                ThisSum += A[k];</span><br><span class="line">            &#125;</span><br><span class="line">            if(ThisSum &gt; MaxSum) &#123;</span><br><span class="line">                MaxSum = ThisSum; //更新结果</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return MaxSum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>方法二：O（N2）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">int MaxSubseqSuml(int A[], int N) &#123;</span><br><span class="line"></span><br><span class="line">    int ThisSum, MaxSum = 0;</span><br><span class="line">    int i, j, k;</span><br><span class="line">    for(i = 0; i &lt; N; i++) &#123;  //i是子列左端位置</span><br><span class="line">    	ThisSum = 0;  //A[i]到A[j]的子列和</span><br><span class="line">        for(j = i; j &lt; N; j++) &#123;  //j是子列右端位置</span><br><span class="line">            ThisSum += A[j];</span><br><span class="line">            if(ThisSum &gt; MaxSum) &#123;</span><br><span class="line">                MaxSum = ThisSum; //更新结果</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return MaxSum;	</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>方法三：分而治之+递归 O(NlogN)</p>
+<p>方法四：在线处理 O(N)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">int MaxSubseqSuml(int A[], int N) &#123;</span><br><span class="line"></span><br><span class="line">    int ThisSum, MaxSum = 0;</span><br><span class="line">    int i;</span><br><span class="line">    ThisSum = MaxSum = 0;  //当前子列和 = 最大子列和 初始化</span><br><span class="line">    for(i = 0; i &lt; N; i++) &#123;  //i是子列左端位置</span><br><span class="line">        ThisSum += A[i]; //向右累加</span><br><span class="line">        if(ThisSum &gt; MaxSum) </span><br><span class="line">        	MaxSum = ThisSum; //若当前子列和大于最大子列和，更新最大子列和为当前子列和</span><br><span class="line">        else if(ThisSum &lt; 0) //这句最重要  若当前子列和小于0，重置为0（代表抛弃） 因为它不可能使后面的子列和越来越大</span><br><span class="line">        	ThisSum = 0;</span><br><span class="line">    &#125;</span><br><span class="line">    return MaxSum;		</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -228,7 +226,7 @@
     </p>
     <p class="copyright-item">
       <span>原文链接: </span>
-      <a href="http://sshencchen.me/2018/01/23/element-ui Tree树形控件清空勾选项/">http://sshencchen.me/2018/01/23/element-ui Tree树形控件清空勾选项/</a>
+      <a href="http://sshencchen.me/2018/01/03/Maximum Continuous Subsequence Sum/">http://sshencchen.me/2018/01/03/Maximum Continuous Subsequence Sum/</a>
     </p>
     <p class="copyright-item">
       <span>许可协议: </span>
@@ -268,15 +266,15 @@
         
   <nav class="post-nav">
     
-      <a class="prev" href="/2018/03/01/属性覆盖/">
+      <a class="prev" href="/2018/01/23/element-ui Tree树形控件清空勾选项/">
         <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">JS对象的属性覆盖</span>
+        <span class="prev-text nav-default">element-ui Tree树形控件清空勾选项</span>
         <span class="prev-text nav-mobile">上一篇</span>
       </a>
     
     
-      <a class="next" href="/2018/01/03/Maximum Continuous Subsequence Sum/">
-        <span class="next-text nav-default">【数据结构与算法】最大子序列和</span>
+      <a class="next" href="/2017/10/23/vue数据添加单个删除批量删除/">
+        <span class="next-text nav-default">vue.js之数据添加、单个删除和批量删除</span>
         <span class="prev-text nav-mobile">下一篇</span>
         <i class="iconfont icon-right"></i>
       </a>
