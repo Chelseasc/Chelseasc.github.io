@@ -38,7 +38,7 @@
 
 
 
-<link rel="canonical" href="http://sshencchen.me/archives/2018/"/>
+<link rel="canonical" href="http://sshencchen.me/2018/05/21/倒计时返回/"/>
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=2.6.0" />
@@ -77,11 +77,7 @@
 
 
 
-    <title>
-  
-    归档 - Chelseasc
-  
-</title>
+    <title>  - Chelseasc </title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -175,155 +171,108 @@
           <div id="content" class="content">
             
   
-  <section id="archive" class="archive">
-    
-      
-        <div class="archive-title">
-          <span class="archive-post-counter">
-            目前共计 8 篇日志
-          </span>
-        </div>
-      
-    
-
-    
-      
-        
-        
-
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
         
           
-          <div class="collection-title">
-            <h2 class="archive-year">2018</h2>
-          </div>
         
-      
+      </h1>
 
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            05-21
-          
+      <div class="post-meta">
+        <span class="post-time">
+          2018-05-21
         </span>
-        <span class="archive-post-title">
-          <a href="/2018/05/21/倒计时返回/" class="archive-post-link">
-            
-          </a>
-        </span>
+        
+        
       </div>
+    </header>
+
+    
+    
+
+    <div class="post-content">
+      
+        <p>模仿一下工行app里倒计时返回的效果，倒计时结束按钮才可用</p>
+<p><img src="http://oyd0q85o6.bkt.clouddn.com/setInterval.gif" alt="image"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">//默认不可点击</span><br><span class="line">&lt;div class=&quot;title&quot;&gt;</span><br><span class="line">	&lt;a href=&quot;http://baidu.com&quot; onclick=&quot;return false;&quot; class=&quot;modal-ok&quot;&gt;</span><br><span class="line">		&gt;返回&lt;span id=&quot;set_time&quot;&gt;(10s)&lt;/span&gt;</span><br><span class="line">	&lt;/a&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    /**</span><br><span class="line">     *计时器</span><br><span class="line">     */</span><br><span class="line">    var $set_time = $(&quot;#set_time&quot;);</span><br><span class="line">    var i = 10; //初始化倒计时秒数</span><br><span class="line">    var timer = setInterval(function () &#123;</span><br><span class="line">        i--;</span><br><span class="line">        $set_time.text(&quot;(&quot; + i + &quot;s)&quot;);</span><br><span class="line">        if (i &lt; 1) &#123; //倒计时结束</span><br><span class="line">            $set_time.text(&quot;&quot;);</span><br><span class="line">            $set_time.parent(&quot;.modal-ok&quot;).css(&#123; &quot;background&quot;: &quot;#0187d6&quot;, &quot;color&quot;: &quot;#fff&quot;, &quot;border&quot;: &quot;1px solid #0187d6&quot; &#125;);</span><br><span class="line">            $set_time.parent(&quot;.modal-ok&quot;).removeAttr(&apos;onclick&apos;, &apos;return false;&apos;);</span><br><span class="line">            clearInterval(timer); //清楚计时器</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, 1000);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>setInterval()函数会不停的调用函数，直到执行clearInterval()为止才会终止。</p>
+
+      
+    </div>
+
     
       
-        
-        
-
-        
       
 
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            03-05
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2018/03/05/两种方式给input输入的值转换为大写（或小写）/" class="archive-post-link">
-            两种方式给input输入的值转换为大写（或小写）
-          </a>
-        </span>
-      </div>
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>原文作者: </span>
+      <a href="http://sshencchen.me">Chelseasc</a>
+    </p>
+    <p class="copyright-item">
+      <span>原文链接: </span>
+      <a href="http://sshencchen.me/2018/05/21/倒计时返回/">http://sshencchen.me/2018/05/21/倒计时返回/</a>
+    </p>
+    <p class="copyright-item">
+      <span>许可协议: </span>
+      
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+
+
+
+      
+      
+  <div class="post-reward">
+    <input type="checkbox" name="reward" id="reward" hidden />
+    <label class="reward-button" for="reward">赞赏支持</label>
+    <div class="qr-code">
+      
+      
+        <label class="qr-code-image" for="reward">
+          <img class="image" src="/image/reward/wechat.png" title="wechat">
+        </label>
+      
+      
+        <label class="qr-code-image" for="reward">
+          <img class="image" src="/image/reward/alipay.png" title="alipay">
+        </label>
+      
+    </div>
+  </div>
+
     
-      
-        
-        
 
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            03-03
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2018/03/03/scoped/" class="archive-post-link">
-            scoped属性及css作用域问题
-          </a>
-        </span>
-      </div>
     
-      
+      <footer class="post-footer">
         
         
-
         
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            03-01
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2018/03/01/属性覆盖/" class="archive-post-link">
-            JS对象的属性覆盖
-          </a>
-        </span>
-      </div>
+  <nav class="post-nav">
     
-      
-        
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            01-23
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2018/01/23/element-ui Tree树形控件清空勾选项/" class="archive-post-link">
-            element-ui Tree树形控件清空勾选项
-          </a>
-        </span>
-      </div>
     
-      
-        
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            01-03
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2018/01/03/Maximum Continuous Subsequence Sum/" class="archive-post-link">
-            【数据结构与算法】最大子序列和
-          </a>
-        </span>
-      </div>
-    
-  </section>
-
-  
-  <nav class="pagination">
-    
+      <a class="next" href="/2018/03/05/两种方式给input输入的值转换为大写（或小写）/">
+        <span class="next-text nav-default">两种方式给input输入的值转换为大写（或小写）</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
     
   </nav>
 
+      </footer>
+    
+
+  </article>
 
 
           </div>
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
       </main>
@@ -407,6 +356,11 @@
     </div>
 
     
+  
+  
+
+  
+
 
 
     

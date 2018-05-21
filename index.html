@@ -177,6 +177,49 @@
     <header class="post-header">
       <h1 class="post-title">
         
+          <a class="post-link" href="/2018/05/21/倒计时返回/"></a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2018-05-21
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <p>模仿一下工行app里倒计时返回的效果，倒计时结束按钮才可用</p>
+<p><img src="http://oyd0q85o6.bkt.clouddn.com/setInterval.gif" alt="image"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">//默认不可点击</span><br><span class="line">&lt;div class=&quot;title&quot;&gt;</span><br><span class="line">	&lt;a href=&quot;http://baidu.com&quot; onclick=&quot;return false;&quot; class=&quot;modal-ok&quot;&gt;</span><br><span class="line">		&gt;返回&lt;span id=&quot;set_time&quot;&gt;(10s)&lt;/span&gt;</span><br><span class="line">	&lt;/a&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    /**</span><br><span class="line">     *计时器</span><br><span class="line">     */</span><br><span class="line">    var $set_time = $(&quot;#set_time&quot;);</span><br><span class="line">    var i = 10; //初始化倒计时秒数</span><br><span class="line">    var timer = setInterval(function () &#123;</span><br><span class="line">        i--;</span><br><span class="line">        $set_time.text(&quot;(&quot; + i + &quot;s)&quot;);</span><br><span class="line">        if (i &lt; 1) &#123; //倒计时结束</span><br><span class="line">            $set_time.text(&quot;&quot;);</span><br><span class="line">            $set_time.parent(&quot;.modal-ok&quot;).css(&#123; &quot;background&quot;: &quot;#0187d6&quot;, &quot;color&quot;: &quot;#fff&quot;, &quot;border&quot;: &quot;1px solid #0187d6&quot; &#125;);</span><br><span class="line">            $set_time.parent(&quot;.modal-ok&quot;).removeAttr(&apos;onclick&apos;, &apos;return false;&apos;);</span><br><span class="line">            clearInterval(timer); //清楚计时器</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, 1000);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>setInterval()函数会不停的调用函数，直到执行clearInterval()为止才会终止。</p>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
           <a class="post-link" href="/2018/03/05/两种方式给input输入的值转换为大写（或小写）/">两种方式给input输入的值转换为大写（或小写）</a>
         
       </h1>
